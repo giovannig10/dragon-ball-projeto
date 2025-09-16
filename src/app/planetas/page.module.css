@@ -1,0 +1,342 @@
+/* Planetas Page Styles */
+.planetasPage {
+  min-height: calc(100vh - 80px);
+  padding: 3rem 0;
+  background: linear-gradient(to bottom, #000428, #004e92);
+  color: var(--white);
+  position: relative;
+}
+
+.planetasPage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="10" cy="10" r="1" fill="rgba(255,255,255,0.8)"/><circle cx="30" cy="25" r="0.5" fill="rgba(255,255,255,0.6)"/><circle cx="60" cy="15" r="0.8" fill="rgba(255,255,255,0.9)"/><circle cx="80" cy="35" r="0.3" fill="rgba(255,255,255,0.5)"/><circle cx="20" cy="50" r="0.6" fill="rgba(255,255,255,0.7)"/><circle cx="70" cy="60" r="0.4" fill="rgba(255,255,255,0.6)"/><circle cx="40" cy="80" r="0.7" fill="rgba(255,255,255,0.8)"/><circle cx="90" cy="70" r="0.5" fill="rgba(255,255,255,0.5)"/></svg>');
+  pointer-events: none;
+  animation: stars-twinkle 5s infinite alternate;
+}
+
+@keyframes stars-twinkle {
+  0% { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pageHeader h1 {
+  color: var(--white);
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.pageHeader p {
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Loading */
+.loadingContainer {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: var(--white);
+}
+
+.planetOrbit {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 2rem;
+}
+
+.planet {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, 
+    var(--yellow-energy) 0%, 
+    var(--orange-primary) 50%, 
+    var(--blue-primary) 100%);
+  box-shadow: 
+    0 0 30px rgba(255, 212, 0, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: planet-orbit 3s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 0 0;
+}
+
+@keyframes planet-orbit {
+  0% { transform: translate(-50%, -50%) rotate(0deg) translateX(70px) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg) translateX(70px) rotate(-360deg); }
+}
+
+.loadingText {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Error */
+.errorContainer {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--white);
+}
+
+.errorContainer h2 {
+  color: var(--red-energy);
+  margin-bottom: 1rem;
+}
+
+/* Grid de Planetas */
+.planetasGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 3rem;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card do Planeta */
+.planetaCard {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 50px rgba(255, 107, 0, 0.2);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  color: var(--gray-dark);
+}
+
+.planetaCard:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(255, 107, 0, 0.4);
+  border-color: var(--orange-primary);
+}
+
+.cardHeader {
+  background: var(--gradient-orange);
+  padding: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.planetImageContainer {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.planetImage {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--white);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.planetGlow {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    rgba(255, 212, 0, 0.3) 0%, 
+    rgba(255, 107, 0, 0.2) 50%, 
+    transparent 100%);
+  animation: planet-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes planet-glow {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.planetName {
+  color: var(--blue-primary);
+  font-size: 2rem;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+.cardContent {
+  padding: 2rem;
+}
+
+.planetDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: var(--gray-dark);
+}
+
+.planetStats {
+  margin-bottom: 2rem;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: var(--gray-light);
+  border-radius: 10px;
+  transition: background 0.3s ease;
+}
+
+.statItem:hover {
+  background: rgba(255, 107, 0, 0.1);
+}
+
+.statIcon {
+  font-size: 1.5rem;
+  width: 2rem;
+  text-align: center;
+}
+
+.statLabel {
+  font-weight: 600;
+  color: var(--blue-primary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.statValue {
+  color: var(--orange-primary);
+  font-weight: 500;
+}
+
+.habitantes {
+  margin-top: 2rem;
+}
+
+.habitantes h4 {
+  color: var(--blue-primary);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.habitantesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.habitanteTag {
+  background: var(--gradient-blue);
+  color: var(--white);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: transform 0.3s ease;
+}
+
+.habitanteTag:hover {
+  transform: translateY(-2px);
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: 3rem;
+  color: var(--white);
+  position: relative;
+  z-index: 1;
+}
+
+.emptyState h3 {
+  color: var(--orange-primary);
+  margin-bottom: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .planetasPage {
+    padding: 2rem 0;
+  }
+
+  .pageHeader {
+    margin-bottom: 3rem;
+  }
+
+  .planetasGrid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .planetImage {
+    width: 120px;
+    height: 120px;
+  }
+
+  .planetName {
+    font-size: 1.5rem;
+  }
+
+  .cardContent {
+    padding: 1.5rem;
+  }
+
+  .planetOrbit {
+    width: 150px;
+    height: 150px;
+  }
+
+  .planet {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .planetasGrid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .cardHeader {
+    padding: 1.5rem;
+  }
+
+  .cardContent {
+    padding: 1rem;
+  }
+
+  .statItem {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .habitantesList {
+    justify-content: center;
+  }
+}

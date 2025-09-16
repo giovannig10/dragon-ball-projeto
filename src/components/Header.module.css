@@ -1,0 +1,239 @@
+.header {
+  background: linear-gradient(135deg, #ff6b00 0%, #ff9500 50%, #ffb700 100%);
+  box-shadow: 0 4px 20px rgba(255, 107, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 3px solid #004085;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: relative;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  z-index: 1001;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logoText {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #004085;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  font-family: 'Impact', 'Arial Black', sans-serif;
+  letter-spacing: 1px;
+}
+
+.logoSymbol {
+  font-size: 2rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.nav {
+  display: flex;
+}
+
+.navList {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.navLink {
+  color: #004085;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+}
+
+.navLink:hover {
+  background: rgba(0, 64, 133, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.navLink.active {
+  background: #004085;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.navLink.active:hover {
+  background: #003366;
+}
+
+.mobileMenuButton {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  z-index: 1001;
+  transition: all 0.3s ease;
+}
+
+.mobileMenuButton span {
+  width: 25px;
+  height: 3px;
+  background: #004085;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animação do botão hamburger */
+.mobileMenuButton.menuOpen span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobileMenuButton.menuOpen span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobileMenuButton.menuOpen span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .logoText {
+    font-size: 1.5rem;
+  }
+
+  .logoSymbol {
+    font-size: 1.7rem;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff6b00 0%, #ff9500 50%, #ffb700 100%);
+    transition: right 0.3s ease;
+    z-index: 1000;
+    padding-top: 5rem;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav.navOpen {
+    right: 0;
+  }
+
+  .navList {
+    flex-direction: column;
+    gap: 0;
+    padding: 0 1rem;
+  }
+
+  .navLink {
+    display: block;
+    text-align: left;
+    padding: 1.2rem 1.5rem;
+    border-radius: 10px;
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    border: 2px solid transparent;
+  }
+
+  .navLink:hover {
+    background: rgba(0, 64, 133, 0.15);
+    border-color: #004085;
+    transform: translateX(10px);
+  }
+
+  .navLink.active {
+    background: #004085;
+    color: white;
+  }
+
+  .mobileMenuButton {
+    display: flex;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0.8rem;
+  }
+
+  .logoText {
+    font-size: 1.3rem;
+  }
+
+  .logoSymbol {
+    font-size: 1.5rem;
+  }
+
+  .nav {
+    width: 250px;
+    padding-top: 4rem;
+  }
+
+  .navLink {
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Acessibilidade */
+@media (prefers-reduced-motion: reduce) {
+  .logo,
+  .navLink,
+  .mobileMenuButton span,
+  .nav {
+    transition: none;
+  }
+}
+
+/* Estados de foco para acessibilidade */
+.logo:focus,
+.navLink:focus,
+.mobileMenuButton:focus {
+  outline: 2px solid #004085;
+  outline-offset: 2px;
+}
+
+.mobileMenuButton:focus {
+  background: rgba(0, 64, 133, 0.1);
+  border-radius: 5px;
+}
