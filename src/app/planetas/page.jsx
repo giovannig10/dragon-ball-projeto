@@ -8,11 +8,13 @@ export default function Planetas() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+
   useEffect(() => {
     const fetchPlanetas = async () => {
       try {
-        // Substitua pela URL da sua API
-        const response = await fetch('http://localhost:3001/api/planetas');
+        const response = await fetch(`${API_URL}/planetas`);
+         
         
         if (!response.ok) {
           throw new Error('Erro ao carregar planetas');
@@ -23,48 +25,6 @@ export default function Planetas() {
       } catch (err) {
         setError(err.message);
         // Dados de exemplo para quando a API não estiver disponível
-        setPlanetas([
-          {
-            id: 1,
-            nome: 'Terra',
-            descricao: 'Planeta natal de Goku e lar de muitos personagens principais da série.',
-            populacao: '7.8 bilhões',
-            clima: 'Temperado variado',
-            gravidade: '1x',
-            imagem: 'https://via.placeholder.com/400x300/0066cc/ffffff?text=Terra',
-            habitantes: ['Humanos', 'Saiyajins']
-          },
-          {
-            id: 2,
-            nome: 'Nameku',
-            descricao: 'Planeta verde dos Namekuseijins, conhecido pelas Esferas do Dragão.',
-            populacao: '~100',
-            clima: 'Tropical úmido',
-            gravidade: '1x',
-            imagem: 'https://via.placeholder.com/400x300/00ff88/000000?text=Nameku',
-            habitantes: ['Namekuseijins']
-          },
-          {
-            id: 3,
-            nome: 'Vegeta',
-            descricao: 'Antigo planeta dos Saiyajins, destruído por Freeza.',
-            populacao: 'Extinto',
-            clima: 'Árido',
-            gravidade: '10x',
-            imagem: 'https://via.placeholder.com/400x300/ff4444/ffffff?text=Vegeta',
-            habitantes: ['Saiyajins (extintos)']
-          },
-          {
-            id: 4,
-            nome: 'Kai',
-            descricao: 'Planeta sagrado dos Kaioshins no reino divino.',
-            populacao: 'Poucos',
-            clima: 'Celestial',
-            gravidade: '10x',
-            imagem: 'https://via.placeholder.com/400x300/ffd700/000000?text=Kai',
-            habitantes: ['Kaioshins', 'Kibito']
-          }
-        ]);
       } finally {
         setLoading(false);
       }
@@ -85,6 +45,7 @@ export default function Planetas() {
   }
 
   if (error && planetas.length === 0) {
+
     return (
       <div className={styles.errorContainer}>
         <h2>Erro ao carregar planetas</h2>
@@ -107,7 +68,7 @@ export default function Planetas() {
               <div className={styles.cardHeader}>
                 <div className={styles.planetImageContainer}>
                   <img
-                    src={planeta.imagem}
+                    src={planeta.imageUrl}
                     alt={planeta.nome}
                     className={styles.planetImage}
                   />
@@ -123,38 +84,11 @@ export default function Planetas() {
                 
                 <div className={styles.planetStats}>
                   <div className={styles.statItem}>
-                    <span className={styles.statIcon}>👥</span>
-                    <div>
-                      <span className={styles.statLabel}>População:</span>
-                      <span className={styles.statValue}>{planeta.populacao}</span>
-                    </div>
-                  </div>
-                  
-                  <div className={styles.statItem}>
-                    <span className={styles.statIcon}>🌡️</span>
-                    <div>
-                      <span className={styles.statLabel}>Clima:</span>
-                      <span className={styles.statValue}>{planeta.clima}</span>
-                    </div>
-                  </div>
-                  
-                  <div className={styles.statItem}>
-                    <span className={styles.statIcon}>⚖️</span>
-                    <div>
-                      <span className={styles.statLabel}>Gravidade:</span>
-                      <span className={styles.statValue}>{planeta.gravidade}</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div className={styles.habitantes}>
-                  <h4>Habitantes:</h4>
-                  <div className={styles.habitantesList}>
-                    {planeta.habitantes.map((habitante, index) => (
-                      <span key={index} className={styles.habitanteTag}>
-                        {habitante}
-                      </span>
-                    ))}
+                     <p className={styles.statValue}> Nome: {planeta.name}</p>
+                    
+                      <p className={styles.statLabel}> Nível de Poder: {planeta.nivelPoder}</p>
+                      
+                    
                   </div>
                 </div>
               </div>

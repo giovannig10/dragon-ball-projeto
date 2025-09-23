@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import styles from './page.module.css';
+import Image from 'next/image';
+
 
 export default function Home() {
   return (
@@ -30,50 +32,59 @@ export default function Home() {
           </div>
           <div className={styles.heroVisual}>
             <div className={styles.energySphere}>
-              <span className={styles.dragonSymbol}>🐉</span>
+              <Image 
+              src="/image/esfera4estrela.png" 
+              alt="Energy Sphere"
+              width={300}
+              height={300}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+            
+      {/* Stats Section */}
+      <section className={styles.statsSection}>
+        <div className="container">
+          <div className={styles.statsGrid}>
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>40+</div>
+              <div className={styles.statLabel}>Anos de História</div>
+            </div>
+            
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>12</div>
+              <div className={styles.statLabel}>Universos</div>
+            </div>
+            
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>700+</div>
+              <div className={styles.statLabel}>Episódios</div>
+            </div>
+            
+            <div className={styles.statCard}>
+              <div className={styles.statNumber}>∞</div>
+              <div className={styles.statLabel}>Fãs pelo Mundo</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className={styles.featuresSection}>
+      {/* Call to Action Section */}
+      <section className={styles.ctaSection}>
         <div className="container">
-          <h2 className={styles.sectionTitle}>O que você pode explorar</h2>
-          <div className={styles.featuresGrid}>
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>👨‍🚀</div>
-              <h3>Personagens</h3>
-              <p>
-                Conheça guerreiros lendários como Goku, Vegeta, Piccolo e muitos outros. 
-                Descubra suas histórias, poderes e transformações épicas.
-              </p>
-              <Link href="/personagens" className={styles.featureLink}>
-                Ver Personagens →
+          <div className={styles.ctaContent}>
+            <h2>Pronto para sua Jornada?</h2>
+            <p>
+              Junte-se a milhões de fãs ao redor do mundo e mergulhe no universo 
+              mais épico dos animes e mangás. Sua aventura começa agora!
+            </p>
+            <div className={styles.ctaButtons}>
+              <Link href="/personagens" className="btn btn-primary">
+                Começar Exploração
               </Link>
-            </div>
-
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>🪐</div>
-              <h3>Planetas</h3>
-              <p>
-                Explore mundos incríveis como a Terra, Nameku, Vegeta e outros planetas 
-                que servem de cenário para as aventuras de Dragon Ball.
-              </p>
-              <Link href="/planetas" className={styles.featureLink}>
-                Descobrir Planetas →
-              </Link>
-            </div>
-
-            <div className={styles.featureCard}>
-              <div className={styles.featureIcon}>⚡</div>
-              <h3>Raças</h3>
-              <p>
-                Saiba mais sobre Saiyajins, Namekuseijins, Androides e outras raças 
-                fascinantes que habitam o universo de Dragon Ball.
-              </p>
-              <Link href="/racas" className={styles.featureLink}>
-                Conhecer Raças →
+              <Link href="/contato" className="btn btn-secondary">
+                Deixe seu Feedback
               </Link>
             </div>
           </div>

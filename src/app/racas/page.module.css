@@ -148,7 +148,7 @@
   position: relative;
 }
 
-.racaImage {
+.imageUrl {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -180,6 +180,7 @@
   font-size: 0.9rem;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background: var(--gradient-orange);
 }
 
 .cardContent {
@@ -191,38 +192,6 @@
   line-height: 1.7;
   margin-bottom: 2rem;
   color: var(--gray-dark);
-}
-
-.racaInfo {
-  margin-bottom: 2rem;
-  background: var(--gray-light);
-  padding: 1.5rem;
-  border-radius: 15px;
-}
-
-.infoRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.infoRow:last-child {
-  margin-bottom: 0;
-}
-
-.infoLabel {
-  font-weight: 600;
-  color: var(--blue-primary);
-  font-size: 1rem;
-}
-
-.infoValue {
-  color: var(--orange-primary);
-  font-weight: 500;
-  font-size: 1rem;
 }
 
 .section {
@@ -244,53 +213,25 @@
 }
 
 .caracteristicasList {
-  list-style: none;
-  padding: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--gray-dark);
+  background: rgba(255, 107, 0, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid var(--orange-primary);
   margin: 0;
 }
 
-.caracteristicaItem {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  padding: 0.8rem;
-  background: rgba(255, 107, 0, 0.05);
-  border-radius: 10px;
-  margin-bottom: 0.5rem;
-  transition: background 0.3s ease;
-}
-
-.caracteristicaItem:hover {
-  background: rgba(255, 107, 0, 0.1);
-}
-
-.caracteristicaIcon {
-  font-size: 1.2rem;
-  color: var(--orange-primary);
-}
-
 .habilidadesList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.habilidadeTag {
-  background: var(--gradient-orange);
-  color: var(--blue-primary);
-  padding: 0.8rem 1.2rem;
-  border-radius: 20px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid transparent;
-}
-
-.habilidadeTag:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  border-color: var(--blue-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--gray-dark);
+  background: rgba(0, 64, 133, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid var(--blue-primary);
+  margin: 0;
 }
 
 /* Empty State */
@@ -336,12 +277,6 @@
     padding: 2rem;
   }
 
-  .infoRow {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.25rem;
-  }
-
   .dnaSpiral {
     width: 80px;
     height: 150px;
@@ -360,19 +295,5 @@
 
   .cardContent {
     padding: 1.5rem;
-  }
-
-  .racaInfo {
-    padding: 1rem;
-  }
-
-  .habilidadesList {
-    justify-content: center;
-  }
-
-  .caracteristicaItem {
-    flex-direction: column;
-    text-align: center;
-    gap: 0.5rem;
   }
 }

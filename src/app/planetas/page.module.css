@@ -203,12 +203,10 @@
 .statItem {
   display: flex;
   align-items: center;
-  gap: 1rem;
+flex-direction: column;
   margin-bottom: 1rem;
   padding: 1rem;
-  background: var(--gray-light);
   border-radius: 10px;
-  transition: background 0.3s ease;
 }
 
 .statItem:hover {

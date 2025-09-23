@@ -1,0 +1,611 @@
+/* Página de Feedback - Estilo Dragon Ball */
+.feedbackPage {
+  min-height: calc(100vh - 80px);
+  padding: 3rem 0;
+  background: linear-gradient(135deg, 
+    var(--blue-primary) 0%, 
+    var(--blue-secondary) 50%, 
+    var(--gray-dark) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fundo animado com elementos Dragon Ball */
+.feedbackPage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="25" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="25" cy="75" r="1.2" fill="rgba(255,255,255,0.1)"/></svg>');
+  animation: drift 20s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes drift {
+  from { transform: translate(0, 0) rotate(0deg); }
+  to { transform: translate(-50px, -50px) rotate(360deg); }
+}
+
+/* Header da página */
+.pageHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+}
+
+.pageHeader h1 {
+  color: var(--white);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: 1rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.pageHeader p {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* Indicador de progresso */
+.progressIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.progressBar {
+  width: 300px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressFill {
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-orange);
+  border-radius: 20px;
+  animation: progress-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes progress-glow {
+  from { box-shadow: 0 0 10px rgba(255, 107, 0, 0.5); }
+  to { box-shadow: 0 0 20px rgba(255, 107, 0, 0.8); }
+}
+
+.progressText {
+  color: var(--orange-light);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Container do formulário */
+.formContainer {
+  position: relative;
+  z-index: 1;
+}
+
+.contactForm {
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 25px;
+  padding: 3rem;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 0 100px rgba(255, 107, 0, 0.1);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  backdrop-filter: blur(10px);
+  animation: form-entrance 0.8s ease-out;
+}
+
+@keyframes form-entrance {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Seções do formulário */
+.formSection {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--gray-light);
+  position: relative;
+}
+
+.formSection:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.sectionTitle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  color: var(--blue-primary);
+  font-size: 1.8rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.sectionIcon {
+  font-size: 2rem;
+  background: var(--gradient-orange);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+}
+
+/* Layout do formulário */
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.formLabel {
+  font-weight: 600;
+  color: var(--blue-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Campos do formulário */
+.formField {
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--gray-medium);
+  border-radius: 15px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: var(--white);
+  font-family: inherit;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.formField:focus {
+  outline: none;
+  border-color: var(--orange-primary);
+  box-shadow: 
+    0 0 20px rgba(255, 107, 0, 0.2),
+    0 4px 15px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.formField::placeholder {
+  color: var(--gray-dark);
+  opacity: 0.7;
+}
+
+/* Estados de validação */
+.fieldValid {
+  border-color: var(--green-energy);
+  background: rgba(0, 255, 136, 0.05);
+}
+
+.fieldValid:focus {
+  border-color: var(--green-energy);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 136, 0.2),
+    0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.fieldError {
+  border-color: var(--red-energy);
+  background: rgba(255, 68, 68, 0.05);
+}
+
+.fieldError:focus {
+  border-color: var(--red-energy);
+  box-shadow: 
+    0 0 20px rgba(255, 68, 68, 0.2),
+    0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.errorMessage {
+  color: var(--red-energy);
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.errorMessage::before {
+  content: '⚠️';
+  font-size: 0.8rem;
+}
+
+/* Textarea específico */
+textarea.formField {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+/* Select específico */
+select.formField {
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="%23666" d="M2 0L0 2h4zm0 5L0 3h4z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 12px;
+  appearance: none;
+}
+
+/* Checkboxes customizados */
+.checkboxGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 2px solid var(--gray-light);
+  border-radius: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--white);
+  position: relative;
+}
+
+.checkboxLabel:hover {
+  border-color: var(--orange-primary);
+  background: rgba(255, 107, 0, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(255, 107, 0, 0.1);
+}
+
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.checkboxCustom {
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--gray-medium);
+  border-radius: 6px;
+  background: var(--white);
+  position: relative;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.checkbox:checked + .checkboxCustom {
+  background: var(--gradient-orange);
+  border-color: var(--orange-primary);
+}
+
+.checkbox:checked + .checkboxCustom::after {
+  content: '✓';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--white);
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.checkboxText {
+  font-weight: 500;
+  color: var(--gray-dark);
+}
+
+/* Container de termos */
+.termsContainer {
+  background: rgba(255, 107, 0, 0.05);
+  padding: 1.5rem;
+  border-radius: 15px;
+  border: 2px solid rgba(255, 107, 0, 0.2);
+  margin-bottom: 2rem;
+}
+
+.termsContainer .checkboxLabel {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.termsContainer a {
+  color: var(--blue-primary);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.termsContainer a:hover {
+  color: var(--orange-primary);
+}
+
+/* Botão de envio */
+.submitContainer {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.submitButton {
+  background: var(--gradient-orange);
+  color: var(--blue-primary);
+  border: none;
+  padding: 1.2rem 3rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 6px 20px rgba(255, 107, 0, 0.3),
+    0 0 40px rgba(255, 107, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.submitButton:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 
+    0 10px 30px rgba(255, 107, 0, 0.4),
+    0 0 60px rgba(255, 107, 0, 0.2);
+}
+
+.submitButton:hover::before {
+  left: 100%;
+}
+
+.submitButton:active {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submitting {
+  background: var(--gradient-blue);
+  color: var(--white);
+}
+
+.buttonIcon {
+  font-size: 1.3rem;
+}
+
+/* Spinner de loading */
+.loadingSpinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid var(--white);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.submitNote {
+  margin-top: 1rem;
+  color: var(--gray-dark);
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Página de sucesso */
+.successContainer {
+  text-align: center;
+  padding: 4rem 2rem;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.successIcon {
+  font-size: 8rem;
+  margin-bottom: 2rem;
+  animation: success-bounce 2s ease-in-out infinite;
+}
+
+@keyframes success-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-20px); }
+  60% { transform: translateY(-10px); }
+}
+
+.successTitle {
+  color: var(--white);
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1.5rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+.successMessage {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.3rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  line-height: 1.6;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.energyOrb {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: radial-gradient(circle, 
+    var(--yellow-energy) 0%, 
+    var(--orange-primary) 70%, 
+    transparent 100%);
+  animation: energy-pulse 2s infinite;
+  box-shadow: 0 0 50px rgba(255, 212, 0, 0.6);
+}
+
+@keyframes energy-pulse {
+  0%, 100% { 
+    transform: scale(1); 
+    box-shadow: 0 0 50px rgba(255, 212, 0, 0.6);
+  }
+  50% { 
+    transform: scale(1.1); 
+    box-shadow: 0 0 80px rgba(255, 212, 0, 0.8);
+  }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .contatoPage {
+    padding: 2rem 0;
+  }
+
+  .pageHeader {
+    margin-bottom: 3rem;
+  }
+
+  .pageHeader h1 {
+    font-size: 2.5rem;
+  }
+
+  .pageHeader p {
+    font-size: 1.2rem;
+  }
+
+  .progressBar {
+    width: 250px;
+  }
+
+  .contactForm {
+    padding: 2rem;
+    border-radius: 20px;
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+
+  .sectionIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+
+  .checkboxGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .submitButton {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .successIcon {
+    font-size: 6rem;
+  }
+
+  .successTitle {
+    font-size: 2rem;
+  }
+
+  .successMessage {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactForm {
+    padding: 1.5rem;
+  }
+
+  .formSection {
+    margin-bottom: 2rem;
+  }
+
+  .sectionTitle {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+    font-size: 1.3rem;
+  }
+
+  .formField {
+    padding: 0.8rem 1rem;
+  }
+
+  .checkboxLabel {
+    padding: 0.8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .progressBar {
+    width: 200px;
+  }
+}

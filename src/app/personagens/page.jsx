@@ -63,8 +63,8 @@ export default function Personagens() {
             <div key={personagem.id} className={styles.personagemCard}>
               <div className={styles.cardImageContainer}>
                 <img
-                  src={personagem.imagem}
-                  alt={personagem.nome}
+                  src={personagem.imageUrl}
+                  alt={personagem.name}
                   className={styles.cardImage}
                 />
                 <div className={styles.cardOverlay}>
@@ -73,17 +73,16 @@ export default function Personagens() {
               </div>
               
               <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{personagem.nome}</h3>
+                <h3 className={styles.cardTitle}>{personagem.name}</h3>
                 
                 <div className={styles.cardInfo}>
                   <div className={styles.infoItem}>
-                    <span className={styles.infoLabel}>Raça:</span>
-                    <span className={styles.infoValue}>{personagem.raca}</span>
+                    <span className={styles.infoLabel}>Raça: {personagem.raca}</span>
+                    
                   </div>
                   
                   <div className={styles.infoItem}>
-                    <span className={styles.infoLabel}>Planeta:</span>
-                    <span className={styles.infoValue}>{personagem.planeta}</span>
+                    <span className={styles.infoLabel}>Planeta: {personagem.planeta}</span>
                   </div>
                 </div>
                 

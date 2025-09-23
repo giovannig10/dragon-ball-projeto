@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import styles from './Header.module.css';
+import Image from 'next/image';
 
 export default function Header() {
   const pathname = usePathname();
@@ -13,7 +14,8 @@ export default function Header() {
     { href: '/', label: 'Home' },
     { href: '/personagens', label: 'Personagens' },
     { href: '/planetas', label: 'Planetas' },
-    { href: '/racas', label: 'Raças' }
+    { href: '/racas', label: 'Raças' },
+            { href: '/contato', label: 'Feedback' },
   ];
 
   const toggleMobileMenu = () => {
@@ -29,7 +31,7 @@ export default function Header() {
       <div className={styles.container}>
         <Link href="/" className={styles.logo} onClick={closeMobileMenu}>
           <span className={styles.logoText}>Dragon Ball</span>
-          <span className={styles.logoSymbol}>🐉</span>
+          <Image src="/image/simboloz.png" alt="Logo" width={50} height={50} />
         </Link>
         
         <nav className={`${styles.nav} ${isMobileMenuOpen ? styles.navOpen : ''}`}>
