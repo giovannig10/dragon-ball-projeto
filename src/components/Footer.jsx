@@ -11,15 +11,7 @@ export default function Footer() {
               Explore o universo épico criado por Akira Toriyama. 
               Descubra personagens, planetas e raças incríveis!
             </p>
-            <div className={styles.dragonBalls}>
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-              <span>⭐</span>
-            </div>
+          
           </div>
           
           <div className={styles.footerSection}>

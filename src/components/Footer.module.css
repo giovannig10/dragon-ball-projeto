@@ -59,27 +59,6 @@
   transform: translateX(5px);
 }
 
-.dragonBalls {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.dragonBalls span {
-  font-size: 1.2rem;
-  color: var(--yellow-energy);
-  filter: drop-shadow(0 0 5px rgba(255, 212, 0, 0.5));
-  animation: twinkle 2s infinite;
-  animation-delay: calc(var(--i) * 0.2s);
-}
-
-.dragonBalls span:nth-child(1) { animation-delay: 0s; }
-.dragonBalls span:nth-child(2) { animation-delay: 0.2s; }
-.dragonBalls span:nth-child(3) { animation-delay: 0.4s; }
-.dragonBalls span:nth-child(4) { animation-delay: 0.6s; }
-.dragonBalls span:nth-child(5) { animation-delay: 0.8s; }
-.dragonBalls span:nth-child(6) { animation-delay: 1s; }
-.dragonBalls span:nth-child(7) { animation-delay: 1.2s; }
 
 @keyframes twinkle {
   0%, 100% { opacity: 0.7; transform: scale(1); }

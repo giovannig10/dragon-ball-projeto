@@ -6,7 +6,6 @@ import Image from 'next/image';
 export default function Home() {
   return (
     <div className={styles.homepage}>
-      {/* Hero Section */}
       <section className={styles.heroSection}>
         <div className="container">
           <div className={styles.heroContent}>
@@ -43,7 +42,6 @@ export default function Home() {
         </div>
       </section>
             
-      {/* Stats Section */}
       <section className={styles.statsSection}>
         <div className="container">
           <div className={styles.statsGrid}>
@@ -70,7 +68,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Call to Action Section */}
       <section className={styles.ctaSection}>
         <div className="container">
           <div className={styles.ctaContent}>
@@ -91,7 +88,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Section */}
       <section className={styles.aboutSection}>
         <div className="container">
           <div className={styles.aboutContent}>

@@ -61,7 +61,6 @@ export default function Header() {
         </button>
       </div>
       
-      {/* Overlay para fechar menu mobile */}
       {isMobileMenuOpen && (
         <div className={styles.overlay} onClick={closeMobileMenu}></div>
       )}

@@ -1,7 +1,5 @@
-// Configurações da API
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api';
 
-// Função genérica para fazer requests à API
 export const apiRequest = async (endpoint, options = {}) => {
   try {
     const url = `${API_BASE_URL}${endpoint}`;
@@ -24,7 +22,6 @@ export const apiRequest = async (endpoint, options = {}) => {
   }
 };
 
-// Funções específicas para cada endpoint
 export const personagensApi = {
   getAll: () => apiRequest('/personagens'),
   getById: (id) => apiRequest(`/personagens/${id}`),
@@ -40,7 +37,6 @@ export const racasApi = {
   getById: (id) => apiRequest(`/racas/${id}`),
 };
 
-// Dados de fallback para quando a API não estiver disponível
 export const fallbackData = {
   personagens: [
     {
