@@ -1,233 +1,218 @@
 # 🐉 Dragon Ball Universe - Frontend
 
-Um frontend moderno e responsivo para explorar o universo de Dragon Ball, desenvolvido em React/Next.js com CSS puro e consumindo uma API REST personalizada.
+Projeto desenvolvido em React/Next.js para explorar o universo de Dragon Ball, consumindo uma API REST com dados de personagens, planetas e raças.
 
-## ✨ Características
+## 📋 Pré-requisitos
 
-- **Design Temático**: Visual inspirado no universo Dragon Ball com cores vibrantes e elementos estilizados
-- **Totalmente Responsivo**: Adaptação perfeita para desktop, tablet e mobile
-- **CSS Puro**: Estilização sem frameworks externos, mantendo controle total sobre o design
-- **Navegação Intuitiva**: Menu responsivo com animações suaves
-- **Consumo de API**: Integração com backend para dados dinâmicos
-- **Carregamento Animado**: Estados de loading personalizados para cada seção
-- **Acessibilidade**: Implementação de boas práticas de acessibilidade
+Antes de executar o projeto, certifique-se de ter instalado:
 
-## 🚀 Tecnologias Utilizadas
+### Node.js (versão 18 ou superior)
+- **Download**: https://nodejs.org/
+- **Verificar instalação**: 
+  ```bash
+  node --version
+  npm --version
+  ```
 
-- **Next.js 15.5.3** - Framework React com App Router
-- **React 19.1.0** - Biblioteca para interfaces de usuário
-- **CSS Modules** - Estilização modular e escopo local
-- **CSS Puro** - Sem dependências de frameworks CSS
-- **JavaScript ES6+** - Recursos modernos da linguagem
+## 🚀 Como Executar o Projeto
 
-## 📱 Páginas Implementadas
+### Passo 1: Obter o Código do Projeto
 
-### 🏠 Home
-- Apresentação geral do universo Dragon Ball
-- Seções de funcionalidades com cards interativos
-- Call-to-actions para navegação
-- Animações de esferas energéticas
+**Opção A - Se você recebeu um arquivo ZIP:**
+1. Extraia o arquivo ZIP
+2. Abra o terminal/prompt de comando
+3. Navegue até a pasta do projeto:
+   ```bash
+   cd caminho/para/dragon-ball-projeto
+   ```
 
-### 👨‍🚀 Personagens
-- Listagem de personagens com cards estilizados
-- Informações detalhadas (raça, planeta, descrição)
-- Sistema de hover com overlay
-- Imagens responsivas
-
-### 🪐 Planetas
-- Exploração de mundos do universo DB
-- Estatísticas detalhadas (população, clima, gravidade)
-- Tags de habitantes
-- Tema espacial com estrelas animadas
-
-### ⚡ Raças
-- Catálogo de espécies do universo
-- Características físicas e habilidades
-- Níveis de poder com cores dinâmicas
-- Animações de DNA e elementos genéticos
-
-## 🛠️ Instalação e Execução
-
-### Pré-requisitos
-- Node.js 18+ 
-- npm ou yarn
-
-### Passos para execução
-
-1. **Clone o repositório**
+**Opção B - Se você tem o link do repositório:**
 ```bash
-git clone [seu-repositorio]
-cd front-end-dbz
+git clone https://github.com/giovannig10/dragon-ball-projeto.git
+cd dragon-ball-projeto
 ```
 
-2. **Instale as dependências**
+### Passo 2: Instalar as Dependências
+No terminal, dentro da pasta do projeto, execute:
 ```bash
 npm install
 ```
+⏰ *Aguarde alguns minutos para o download das dependências*
 
-3. **Configure as variáveis de ambiente**
-Crie um arquivo `.env.local` na raiz do projeto:
-```env
-NEXT_PUBLIC_API_URL=http://localhost:3001/api
-```
-
-4. **Execute o projeto**
+### Passo 3: Executar o Projeto
 ```bash
 npm run dev
 ```
 
-5. **Acesse a aplicação**
-Abra [http://localhost:3001](http://localhost:3001) no seu navegador
-
-## 🔧 Scripts Disponíveis
-
-```bash
-npm run dev      # Executa em modo desenvolvimento
-npm run build    # Gera build de produção
-npm run start    # Inicia servidor de produção
-npm run lint     # Executa verificação de código
+### Passo 4: Acessar a Aplicação
+Abra seu navegador e acesse:
+```
+http://localhost:3000
 ```
 
-## 🎨 Estrutura de Design
+## ✅ Verificando se Funcionou
 
-### Paleta de Cores
-- **Laranja Principal**: `#ff6b00` (Inspirado nas esferas)
-- **Azul Principal**: `#004085` (Uniformes e elementos)
-- **Amarelo Energia**: `#ffd700` (Efeitos energéticos)
-- **Verde Nameku**: `#00ff88` (Elementos namekuseijins)
+Após executar `npm run dev`, você deve ver no terminal:
+```
+▲ Next.js 15.5.3
+- Local:        http://localhost:3000
+- ready - started server on 0.0.0.0:3000
+```
 
-### Tipografia
-- **Títulos**: Impact, Arial Black (estilo marcante)
-- **Texto**: Segoe UI, Tahoma (legibilidade)
-- **Tamanhos**: Sistema responsivo com clamp()
+No navegador, você verá a página inicial do Dragon Ball Universe.
 
-### Componentes Visuais
-- Gradientes para simular energia
-- Sombras com blur para profundidade
-- Animações CSS para elementos dinâmicos
-- Borders e cantos arredondados
+## 📱 Páginas Disponíveis
+
+Navegue pelo projeto acessando:
+
+- **Página Inicial**: `http://localhost:3000/`
+- **Personagens**: `http://localhost:3000/personagens`
+- **Planetas**: `http://localhost:3000/planetas`
+- **Raças**: `http://localhost:3000/racas`
+- **Contato**: `http://localhost:3000/contato`
+
+## 🛠️ Comandos Disponíveis
+
+```bash
+npm run dev      # Executa o projeto em modo desenvolvimento
+npm run build    # Gera versão otimizada para produção
+npm run start    # Executa versão de produção (após build)
+npm run lint     # Verifica qualidade do código
+```
+
+## ⚠️ Possíveis Problemas e Soluções
+
+### 1. "npm não é reconhecido como comando"
+**Problema**: Node.js não está instalado ou não está no PATH
+**Solução**: Baixe e instale o Node.js do site oficial
+
+### 2. "Port 3000 is already in use"
+**Problema**: Outro projeto está usando a porta 3000
+**Solução**: 
+- Feche outros projetos Node.js em execução, OU
+- Use outra porta: `npm run dev -- -p 3001`
+
+### 3. Erro durante `npm install`
+**Problema**: Problemas de conectividade ou cache
+**Solução**:
+```bash
+npm cache clean --force
+npm install
+```
+
+### 4. Página não carrega ou aparece em branco
+**Problema**: JavaScript desabilitado ou erro no código
+**Solução**: 
+- Verifique se JavaScript está habilitado no navegador
+- Verifique o console do navegador (F12) para erros
+- Certifique-se de que o terminal ainda está executando
+
+## � Tecnologias Utilizadas
+
+- **Next.js 15.5.3** - Framework React
+- **React 19.1.0** - Biblioteca para interfaces
+- **CSS Modules** - Estilização componetizada
+- **JavaScript ES6+** - Linguagem de programação
 
 ## 📁 Estrutura do Projeto
 
 ```
-src/
-├── app/                 # App Router do Next.js
-│   ├── globals.css     # Estilos globais e variáveis CSS
-│   ├── layout.js       # Layout principal
-│   ├── page.jsx        # Página inicial
-│   ├── personagens/    # Página de personagens
-│   ├── planetas/       # Página de planetas
-│   └── racas/          # Página de raças
-├── components/         # Componentes reutilizáveis
-│   ├── Header.jsx     # Navegação principal
-│   ├── Footer.jsx     # Rodapé
-│   └── Loading.jsx    # Estados de carregamento
-├── styles/            # Estilos adicionais
-└── utils/             # Utilitários e configurações
-    └── api.js         # Configuração da API
+dragon-ball-projeto/
+├── src/
+│   ├── app/                    # Páginas da aplicação (App Router)
+│   │   ├── page.jsx           # Página inicial
+│   │   ├── layout.js          # Layout principal
+│   │   ├── globals.css        # Estilos globais
+│   │   ├── contato/           # Página de contato
+│   │   ├── personagens/       # Página de personagens
+│   │   ├── planetas/          # Página de planetas
+│   │   └── racas/             # Página de raças
+│   ├── components/            # Componentes reutilizáveis
+│   │   ├── Header.jsx         # Cabeçalho com navegação
+│   │   ├── Footer.jsx         # Rodapé
+│   │   └── Loading.jsx        # Componente de loading
+│   └── utils/
+│       └── api.js             # Configurações da API
+├── public/                    # Imagens e arquivos estáticos
+│   └── image/                 # Imagens do projeto
+├── package.json               # Dependências e scripts
+├── next.config.mjs           # Configurações do Next.js
+└── README.md                 # Este arquivo
 ```
 
-## 🔌 Integração com API
+## 🎨 Funcionalidades do Projeto
+
+### Design Responsivo
+- Adaptação automática para desktop, tablet e mobile
+- Menu lateral em dispositivos móveis
+- Cards interativos com hover effects
+
+### Páginas Implementadas
+- **Home**: Apresentação do projeto e navegação
+- **Personagens**: Lista com cards de personagens (Goku, Vegeta, Piccolo, etc.)
+- **Planetas**: Informações sobre planetas (Terra, Nameku, Vegeta)
+- **Raças**: Detalhes sobre raças (Saiyajin, Namekuseijin, etc.)
+- **Contato**: Formulário de contato estilizado
+
+### Recursos Visuais
+- Animações CSS personalizadas
+- Paleta de cores temática do Dragon Ball
+- Estados de loading customizados
+- Efeitos de hover e transições suaves
+
+### Configuração da API
+
+Para usar uma API, crie um arquivo `.env.local` na raiz do projeto:
+```env
+NEXT_PUBLIC_API_URL=http://sua-api.com/api
+```
 
 ### Endpoints Esperados
-```javascript
-GET /api/personagens    # Lista todos os personagens
-GET /api/planetas      # Lista todos os planetas  
-GET /api/racas         # Lista todas as raças
+
+- `GET /api/personagens` - Lista todos os personagens
+- `GET /api/planetas` - Lista todos os planetas  
+- `GET /api/racas` - Lista todas as raças
+
+### Funcionamento sem API
+
+**⚠️ IMPORTANTE**: Se a API não estiver disponível, o projeto automaticamente usa dados de exemplo que estão no arquivo `src/utils/api.js`. Isso significa que o projeto funciona 100% offline para demonstração.
+
+### Dados de Exemplo Incluídos
+
+O projeto vem com dados de exemplo para:
+- **4 Personagens**: Goku, Vegeta, Piccolo, Gohan
+- **3 Planetas**: Terra, Nameku, Vegeta
+- **2 Raças**: Saiyajin, Namekuseijin
+
+Estes dados são exibidos quando a API externa não está disponível.
+
+## 💻 Para Parar o Projeto
+
+No terminal onde está executando, pressione:
+```
+Ctrl + C
 ```
 
-### Formato de Dados
+## 📧 Suporte
 
-**Personagens:**
-```json
-{
-  "id": 1,
-  "nome": "Goku",
-  "raca": "Saiyajin",
-  "planeta": "Terra",
-  "imagem": "url_da_imagem",
-  "descricao": "Descrição do personagem"
-}
-```
+Se encontrar problemas:
 
-**Planetas:**
-```json
-{
-  "id": 1,
-  "nome": "Terra",
-  "descricao": "Descrição do planeta",
-  "populacao": "7.8 bilhões",
-  "clima": "Temperado variado",
-  "gravidade": "1x",
-  "imagem": "url_da_imagem",
-  "habitantes": ["Humanos", "Saiyajins"]
-}
-```
-
-**Raças:**
-```json
-{
-  "id": 1,
-  "nome": "Saiyajin",
-  "descricao": "Descrição da raça",
-  "caracteristicas": ["Lista", "de", "características"],
-  "habilidades": ["Lista", "de", "habilidades"],
-  "planeta": "Planeta de origem",
-  "populacao": "População atual",
-  "imagem": "url_da_imagem",
-  "nivelPoder": "Alto"
-}
-```
-
-## 🎯 Funcionalidades Principais
-
-### ⚡ Responsividade
-- **Desktop**: Layout em grid com múltiplas colunas
-- **Tablet**: Adaptação com menos colunas
-- **Mobile**: Layout single-column com menu lateral
-
-### 🎨 Animações
-- **Energy Pulse**: Animação de energia nas esferas
-- **Planet Orbit**: Rotação orbital para planetas
-- **DNA Spiral**: Rotação de DNA para raças
-- **Hover Effects**: Transformações suaves nos cards
-
-### 🔄 Estados de Carregamento
-- **Loading Personalizado**: Diferentes animações por página
-- **Fallback Data**: Dados de exemplo quando API indisponível
-- **Error Handling**: Tratamento gracioso de erros
-
-### 📱 Menu Mobile
-- **Slide Animation**: Menu lateral deslizante
-- **Overlay**: Fundo escuro para foco
-- **Touch Friendly**: Botões otimizados para toque
-
-## 🚀 Deploy
-
-### Vercel (Recomendado)
-```bash
-npm install -g vercel
-vercel
-```
-
-### Build Manual
-```bash
-npm run build
-npm run start
-```
-
-## 📝 Licença
-
-Este é um projeto educacional inspirado na obra de Akira Toriyama. Todos os direitos de Dragon Ball pertencem aos seus respectivos proprietários.
-
-## 🤝 Contribuição
-
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abra um Pull Request
+1. Verifique se seguiu todos os passos na ordem correta
+2. Confirme se o Node.js versão 18+ está instalado
+3. Certifique-se de estar executando os comandos na pasta correta do projeto
+4. Verifique se não há outros projetos usando a porta 3000
 
 ---
 
-**Desenvolvido com ❤️ e ⚡ por [Seu Nome]**
+**Projeto desenvolvido por Giovanni G.**  
+**SENAI - Desenvolvimento de Sistemas**  
+**Data: Outubro 2024**
+
+### 📝 Notas para Avaliação
+
+- ✅ Projeto funciona 100% offline (com dados de exemplo)
+- ✅ Design responsivo testado em diferentes dispositivos
+- ✅ Navegação funcional entre todas as páginas
+- ✅ Animações e efeitos visuais implementados
+- ✅ Código organizado com componentes reutilizáveis
+- ✅ Preparado para integração com API externa
