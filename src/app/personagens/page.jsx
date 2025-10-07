@@ -1,34 +1,45 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './page.module.css';
 
 export default function Personagens() {
   const [personagens, setPersonagens] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [racas, setRacas] = useState([]);
+  const [planetas, setPlanetas] = useState([]);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const personagensUrl = "http://localhost:4001/personagens";
+  const racaUrl = "http://localhost:4001/raca";
+  const planetasUrl = "http://localhost:4001/planetas";
 
   useEffect(() => {
-    const fetchPersonagens = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`${API_URL}/personagens`);
+        setLoading(true);
         
-        if (!response.ok) {
-          throw new Error('Erro ao carregar personagens');
-        }
+        // Buscar personagens e raças simultaneamente
+        const [personagensResponse, racasResponse, planetasResponse] = await Promise.all([
+          axios.get(personagensUrl),
+          axios.get(racaUrl),
+          axios.get(planetasUrl)
+        ]);
         
-        const data = await response.json();
-        setPersonagens(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
+        setPersonagens(personagensResponse.data);
+        setRacas(racasResponse.data);
+        setPlanetas(planetasResponse.data);
+        setLoading(false);
+      } catch (error) {
+        console.log("Erro ao buscar dados:");
+        console.error(error);
+        setError(error.message);
         setLoading(false);
       }
     };
-
-    fetchPersonagens();
+    
+    fetchData();
   }, []);
 
   if (loading) {
@@ -59,45 +70,51 @@ export default function Personagens() {
         </header>
 
         <div className={styles.personagensGrid}>
-          {personagens.map((personagem) => (
-            <div key={personagem.id} className={styles.personagemCard}>
-              <div className={styles.cardImageContainer}>
-                <img
-                  src={personagem.imageUrl}
-                  alt={personagem.name}
-                  className={styles.cardImage}
-                />
-                <div className={styles.cardOverlay}>
-                  <span className={styles.overlayText}>Ver Detalhes</span>
+          {personagens.map((personagem) => {
+            const personagemRaca = racas.find((r) => r.id === personagem.racaId);
+            const personagemPlaneta = planetas.find((p) => p.id === personagem.planetaId);
+            
+            return (
+              <div key={personagem.id} className={styles.personagemCard}>
+                <div className={styles.cardImageContainer}>
+                  <img
+                    src={personagem.imageUrl}
+                    alt={personagem.name}
+                    className={styles.cardImage}
+                  />
+                  <div className={styles.cardOverlay}>
+                    <span className={styles.overlayText}>Ver Detalhes</span>
+                  </div>
                 </div>
-              </div>
-              
-              <div className={styles.cardContent}>
-                <h3 className={styles.cardTitle}>{personagem.name}</h3>
                 
-                <div className={styles.cardInfo}>
-                  <div className={styles.infoItem}>
-                    <span className={styles.infoLabel}>Raça: {personagem.raca}</span>
+                <div className={styles.cardContent}>
+                  <h3 className={styles.cardTitle}>{personagem.name}</h3>
+                  
+                  <div className={styles.cardInfo}>
+                    <div className={styles.infoItem}>
+                      <span className={styles.infoLabel}>
+                        Raça: {personagemRaca ? personagemRaca.name : 'Desconhecida'}
+                      </span>
+                    </div>
                     
+                    <div className={styles.infoItem}>
+                      <span className={styles.infoLabel}>Planeta: {personagemPlaneta.name}</span>
+                    </div>
                   </div>
                   
-                  <div className={styles.infoItem}>
-                    <span className={styles.infoLabel}>Planeta: {personagem.planeta}</span>
+                  <p className={styles.cardDescription}>
+                    {personagem.descricao}
+                  </p>
+                  
+                  <div className={styles.cardActions}>
+                    <button className={styles.detailsButton}>
+                      Mais Detalhes
+                    </button>
                   </div>
                 </div>
-                
-                <p className={styles.cardDescription}>
-                  {personagem.descricao}
-                </p>
-                
-                <div className={styles.cardActions}>
-                  <button className={styles.detailsButton}>
-                    Mais Detalhes
-                  </button>
-                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {personagens.length === 0 && (
