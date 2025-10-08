@@ -14,8 +14,24 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
+  left: 0;  .cardTitle {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .racaName {
+    font-size: 1.5rem;
+  }
+
+  .cardContent {
+    padding: 1.5rem;
+  }
+
+  .cardImageContainer {
+    height: 200px;
+  }
   bottom: 0;
   background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M20,20 Q30,10 40,20 T60,20" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/><path d="M10,40 Q20,30 30,40 T50,40" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/><path d="M40,60 Q50,50 60,60 T80,60" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/></svg>');
   pointer-events: none;
@@ -142,6 +158,48 @@
   border-color: var(--orange-primary);
 }
 
+/* Classes compatíveis com personagens */
+.cardImageContainer {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.racaCard:hover .cardOverlay {
+  opacity: 1;
+}
+
+.overlayText {
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .cardHeader {
   background: var(--gradient-blue);
   padding: 2rem;
@@ -185,6 +243,59 @@
 
 .cardContent {
   padding: 2.5rem;
+}
+
+.cardInfo {
+  margin-bottom: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: rgba(0, 64, 133, 0.05);
+}
+
+.infoItem:hover {
+  background: rgba(0, 64, 133, 0.1);
+}
+
+.infoLabel {
+  font-weight: 600;
+  color: var(--blue-primary);
+  font-size: 1rem;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: var(--gray-dark);
+}
+
+.cardActions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.detailsButton {
+  background: var(--gradient-blue);
+  color: var(--white);
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detailsButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 64, 133, 0.4);
 }
 
 .racaDescription {
@@ -295,5 +406,19 @@
 
   .cardContent {
     padding: 1.5rem;
+  }
+
+  .cardImageContainer {
+    height: 160px;
+  }
+
+  .infoItem {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .infoLabel {
+    font-size: 0.9rem;
   }
 }

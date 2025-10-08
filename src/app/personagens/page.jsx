@@ -98,13 +98,34 @@ export default function Personagens() {
                     </div>
                     
                     <div className={styles.infoItem}>
-                      <span className={styles.infoLabel}>Planeta: {personagemPlaneta.name}</span>
+                      <span className={styles.infoLabel}>Planeta: {personagemPlaneta ? personagemPlaneta.name : 'Desconhecido'}</span>
+                    </div>
+                    
+                    <div className={styles.infoItem}>
+                      <span className={styles.infoLabel}>
+                        Ki: {personagem.ki}
+                      </span>
                     </div>
                   </div>
                   
                   <p className={styles.cardDescription}>
-                    {personagem.descricao}
+                    {personagem.biografia}
                   </p>
+                  
+                  <div className={styles.section}>
+                    <h4 className={styles.sectionTitle}>Técnicas Especiais</h4>
+                    <p className={styles.tecnicasList}>{personagem.tecnicasEspeciais}</p>
+                  </div>
+                  
+                  <div className={styles.section}>
+                    <h4 className={styles.sectionTitle}>Transformações</h4>
+                    <p className={styles.transformacoesList}>{personagem.transformacoes}</p>
+                  </div>
+                  
+                  <div className={styles.section}>
+                    <h4 className={styles.sectionTitle}>Sagas</h4>
+                    <p className={styles.sagasList}>{personagem.sagas}</p>
+                  </div>
                   
                   <div className={styles.cardActions}>
                     <button className={styles.detailsButton}>

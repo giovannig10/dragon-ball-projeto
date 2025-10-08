@@ -1,36 +1,45 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './page.module.css';
 
 export default function Planetas() {
-  const [planetas, setPlanetas] = useState([]);
+  const [personagens, setPersonagens] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [racas, setRacas] = useState([]);
+  const [planetas, setPlanetas] = useState([]);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const personagensUrl = "http://localhost:4001/personagens";
+  const racaUrl = "http://localhost:4001/raca";
+  const planetasUrl = "http://localhost:4001/planetas";
 
   useEffect(() => {
-    const fetchPlanetas = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`${API_URL}/planetas`);
-         
+        setLoading(true);
         
-        if (!response.ok) {
-          throw new Error('Erro ao carregar planetas');
-        }
+        // Buscar personagens e raças simultaneamente
+        const [personagensResponse, racasResponse, planetasResponse] = await Promise.all([
+          axios.get(personagensUrl),
+          axios.get(racaUrl),
+          axios.get(planetasUrl)
+        ]);
         
-        const data = await response.json();
-        setPlanetas(data);
-      } catch (err) {
-        setError(err.message);
-        // Dados de exemplo para quando a API não estiver disponível
-      } finally {
+        setPersonagens(personagensResponse.data);
+        setRacas(racasResponse.data);
+        setPlanetas(planetasResponse.data);
+        setLoading(false);
+      } catch (error) {
+        console.log("Erro ao buscar dados:");
+        console.error(error);
+        setError(error.message);
         setLoading(false);
       }
     };
-
-    fetchPlanetas();
+    
+    fetchData();
   }, []);
 
   if (loading) {
@@ -38,7 +47,7 @@ export default function Planetas() {
       <div className={styles.loadingContainer}>
         <div className={styles.planetOrbit}>
           <div className={styles.planet}></div>
-          <div className={styles.loadingText}>Explorando o Universo...</div>
+          <span className={styles.loadingText}>Explorando o Universo...</span>
         </div>
       </div>
     );
@@ -63,37 +72,44 @@ export default function Planetas() {
         </header>
 
         <div className={styles.planetasGrid}>
-          {planetas.map((planeta) => (
-            <div key={planeta.id} className={styles.planetaCard}>
-              <div className={styles.cardHeader}>
-                <div className={styles.planetImageContainer}>
+          {planetas.map((planeta) => {
+            return (
+              <div key={planeta.id} className={styles.planetaCard}>
+                <div className={styles.cardImageContainer}>
                   <img
                     src={planeta.imageUrl}
-                    alt={planeta.nome}
-                    className={styles.planetImage}
+                    alt={planeta.name}
+                    className={styles.cardImage}
                   />
-                  <div className={styles.planetGlow}></div>
+                  <div className={styles.cardOverlay}>
+                    <span className={styles.overlayText}>Ver Detalhes</span>
+                  </div>
                 </div>
-                <h3 className={styles.planetName}>{planeta.nome}</h3>
-              </div>
-              
-              <div className={styles.cardContent}>
-                <p className={styles.planetDescription}>
-                  {planeta.descricao}
-                </p>
                 
-                <div className={styles.planetStats}>
-                  <div className={styles.statItem}>
-                     <p className={styles.statValue}> Nome: {planeta.name}</p>
-                    
-                      <p className={styles.statLabel}> Nível de Poder: {planeta.nivelPoder}</p>
-                      
-                    
+                <div className={styles.cardContent}>
+                  <h3 className={styles.cardTitle}>{planeta.name}</h3>
+                  
+                  <div className={styles.cardInfo}>
+                    <div className={styles.infoItem}>
+                      <span className={styles.infoLabel}>
+                        Nível de Poder: {planeta.nivelPoder}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <p className={styles.cardDescription}>
+                    {planeta.descricao}
+                  </p>
+                  
+                  <div className={styles.cardActions}>
+                    <button className={styles.detailsButton}>
+                      Mais Detalhes
+                    </button>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         {planetas.length === 0 && (

@@ -135,6 +135,50 @@
   border-color: var(--orange-primary);
 }
 
+/* Classes compatíveis com personagens */
+.cardImageContainer {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1rem;
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  border-radius: 15px 15px 0 0;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.planetaCard:hover .cardOverlay {
+  opacity: 1;
+}
+
+.overlayText {
+  color: var(--white);
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
 .cardHeader {
   background: var(--gradient-orange);
   padding: 2rem;
@@ -187,6 +231,66 @@
 
 .cardContent {
   padding: 2rem;
+}
+
+.cardTitle {
+  color: var(--blue-primary);
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
+  font-weight: bold;
+}
+
+.cardInfo {
+  margin-bottom: 1.5rem;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.8rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+  background: rgba(255, 107, 0, 0.05);
+}
+
+.infoItem:hover {
+  background: rgba(255, 107, 0, 0.1);
+}
+
+.infoLabel {
+  font-weight: 600;
+  color: var(--blue-primary);
+  font-size: 1rem;
+}
+
+.cardDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: var(--gray-dark);
+}
+
+.cardActions {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.detailsButton {
+  background: var(--gradient-orange);
+  color: var(--white);
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.detailsButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.4);
 }
 
 .planetDescription {
@@ -303,6 +407,14 @@ flex-direction: column;
     padding: 1.5rem;
   }
 
+  .cardImageContainer {
+    height: 200px;
+  }
+
+  .cardTitle {
+    font-size: 1.5rem;
+  }
+
   .planetOrbit {
     width: 150px;
     height: 150px;
@@ -326,6 +438,20 @@ flex-direction: column;
 
   .cardContent {
     padding: 1rem;
+  }
+
+  .cardImageContainer {
+    height: 180px;
+  }
+
+  .infoItem {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
+  .infoLabel {
+    font-size: 0.9rem;
   }
 
   .statItem {

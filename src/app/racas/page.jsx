@@ -1,34 +1,45 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import styles from './page.module.css';
 
 export default function Racas() {
-  const [racas, setRacas] = useState([]);
+  const [personagens, setPersonagens] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [racas, setRacas] = useState([]);
+  const [planetas, setPlanetas] = useState([]);
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL;
+  const personagensUrl = "http://localhost:4001/personagens";
+  const racaUrl = "http://localhost:4001/raca";
+  const planetasUrl = "http://localhost:4001/planetas";
 
   useEffect(() => {
-    const fetchRacas = async () => {
+    const fetchData = async () => {
       try {
-        const response = await fetch(`${API_URL}/raca`);
+        setLoading(true);
         
-        if (!response.ok) {
-          throw new Error('Erro ao carregar raças');
-        }
+        // Buscar personagens e raças simultaneamente
+        const [personagensResponse, racasResponse, planetasResponse] = await Promise.all([
+          axios.get(personagensUrl),
+          axios.get(racaUrl),
+          axios.get(planetasUrl)
+        ]);
         
-        const data = await response.json();
-        setRacas(data);
-      } catch (err) {
-        setError(err.message);
-      } finally {
+        setPersonagens(personagensResponse.data);
+        setRacas(racasResponse.data);
+        setPlanetas(planetasResponse.data);
+        setLoading(false);
+      } catch (error) {
+        console.log("Erro ao buscar dados:");
+        console.error(error);
+        setError(error.message);
         setLoading(false);
       }
     };
-
-    fetchRacas();
+    
+    fetchData();
   }, []);
 
 
@@ -39,7 +50,7 @@ export default function Racas() {
           <div className={styles.dnaStrand}></div>
           <div className={styles.dnaStrand}></div>
         </div>
-        <div className={styles.loadingText}>Analisando DNA das Raças...</div>
+        <span className={styles.loadingText}>Analisando DNA das Raças...</span>
       </div>
     );
   }
@@ -62,46 +73,54 @@ export default function Racas() {
         </header>
 
         <div className={styles.racasGrid}>
-          {racas.map((raca) => (
-            <div key={raca.id} className={styles.racaCard}>
-              <div className={styles.cardHeader}>
-                <img
-                  src={raca.imageUrl}
-                  alt={raca.nome}
-                  className={styles.imageUrl}
-                />
-                <div className={styles.cardTitle}>
-                  <h3 className={styles.racaName}>{raca.nome}</h3>
-                  <div 
-                    className={styles.powerLevel}
+          {racas.map((raca) => {
+            return (
+              <div key={raca.id} className={styles.racaCard}>
+                <div className={styles.cardImageContainer}>
+                  <img
+                    src={raca.imageUrl}
+                    alt={raca.name}
+                    className={styles.cardImage}
+                  />
+                  <div className={styles.cardOverlay}>
+                    <span className={styles.overlayText}>Ver Detalhes</span>
+                  </div>
+                </div>
+                
+                <div className={styles.cardContent}>
+                  <h3 className={styles.cardTitle}>{raca.name}</h3>
                   
-                  >
-                    Nível: {raca.nivelPoder}
+                  <div className={styles.cardInfo}>
+                    <div className={styles.infoItem}>
+                      <span className={styles.infoLabel}>
+                        Nível de Poder Médio: {raca.nivelPoderMedio}
+                      </span>
+                    </div>
+                  </div>
+                  
+                  <p className={styles.cardDescription}>
+                    {raca.descricao}
+                  </p>
+                  
+                  <div className={styles.section}>
+                    <h4 className={styles.sectionTitle}>Características</h4>
+                    <p className={styles.caracteristicasList}>{raca.caracteristicas}</p>
+                  </div>
+                  
+                  <div className={styles.section}>
+                    <h4 className={styles.sectionTitle}>Habilidades Especiais</h4>
+                    <p className={styles.habilidadesList}>{raca.habilidadesEspeciais}</p>
+                  </div>
+                  
+                  <div className={styles.cardActions}>
+                    <button className={styles.detailsButton}>
+                      Mais Detalhes
+                    </button>
                   </div>
                 </div>
               </div>
-              
-              <div className={styles.cardContent}>
-                <p className={styles.racaDescription}>
-                  {raca.descricao}
-                </p>
-                
-                <div className={styles.section}>
-                  <h4 className={styles.sectionTitle}>Características</h4>
-                  <p className={styles.caracteristicasList}>{raca.caracteristicas}</p>
-               
-                  
-                </div>
-                
-                <div className={styles.section}>
-                  <h4 className={styles.sectionTitle}>Habilidades Especiais</h4>
-                  <p className={styles.habilidadesList}>{raca.habilidadesEspeciais}</p>
-                  
-                  </div>
-                </div>
-              </div>
-          
-          ))}
+            );
+          })}
         </div>
 
         {racas.length === 0 && (
@@ -112,6 +131,5 @@ export default function Racas() {
         )}
       </div>
     </div>
-
   );
 }
