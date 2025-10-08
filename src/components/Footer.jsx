@@ -21,6 +21,7 @@ export default function Footer() {
               <li><a href="/personagens">Personagens</a></li>
               <li><a href="/planetas">Planetas</a></li>
               <li><a href="/racas">Raças</a></li>
+              <li><a href="/contato">Feedback</a></li>
             </ul>
           </div>
           
@@ -28,13 +29,13 @@ export default function Footer() {
             <h4>Sobre o Projeto</h4>
             <p>
               Frontend desenvolvido em React/Next.js com CSS puro, 
-              consumindo uma API REST personalizada de Dragon Ball.
+              consumindo uma API personalizada de Dragon Ball.
             </p>
           </div>
         </div>
         
         <div className={styles.footerBottom}>
-          <p>&copy; 2024 Dragon Ball Universe. Projeto educacional inspirado na obra de Akira Toriyama.</p>
+          <p>&copy; 2025 Dragon Ball Universe. Projeto educacional inspirado na obra de Akira Toriyama.</p>
         </div>
       </div>
     </footer>

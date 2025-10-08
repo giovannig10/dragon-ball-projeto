@@ -74,6 +74,8 @@ export default function Racas() {
 
         <div className={styles.racasGrid}>
           {racas.map((raca) => {
+            const racaPlaneta = planetas.find((p) => p.id === raca.planetaId);
+            
             return (
               <div key={raca.id} className={styles.racaCard}>
                 <div className={styles.cardImageContainer}>
@@ -83,7 +85,6 @@ export default function Racas() {
                     className={styles.cardImage}
                   />
                   <div className={styles.cardOverlay}>
-                    <span className={styles.overlayText}>Ver Detalhes</span>
                   </div>
                 </div>
                 
@@ -91,6 +92,12 @@ export default function Racas() {
                   <h3 className={styles.cardTitle}>{raca.name}</h3>
                   
                   <div className={styles.cardInfo}>
+                    <div className={styles.infoItem}>
+                      <span className={styles.infoLabel}>
+                        Planeta: {racaPlaneta ? racaPlaneta.name : 'Desconhecido'}
+                      </span>
+                    </div>
+                    
                     <div className={styles.infoItem}>
                       <span className={styles.infoLabel}>
                         Nível de Poder Médio: {raca.nivelPoderMedio}

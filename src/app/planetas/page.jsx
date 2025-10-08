@@ -82,7 +82,6 @@ export default function Planetas() {
                     className={styles.cardImage}
                   />
                   <div className={styles.cardOverlay}>
-                    <span className={styles.overlayText}>Ver Detalhes</span>
                   </div>
                 </div>
                 
