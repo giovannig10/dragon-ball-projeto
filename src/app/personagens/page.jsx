@@ -126,12 +126,6 @@ export default function Personagens() {
                     <h4 className={styles.sectionTitle}>Sagas</h4>
                     <p className={styles.sagasList}>{personagem.sagas}</p>
                   </div>
-                  
-                  <div className={styles.cardActions}>
-                    <button className={styles.detailsButton}>
-                      Mais Detalhes
-                    </button>
-                  </div>
                 </div>
               </div>
             );

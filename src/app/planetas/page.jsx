@@ -100,12 +100,6 @@ export default function Planetas() {
                   <p className={styles.cardDescription}>
                     {planeta.descricao}
                   </p>
-                  
-                  <div className={styles.cardActions}>
-                    <button className={styles.detailsButton}>
-                      Mais Detalhes
-                    </button>
-                  </div>
                 </div>
               </div>
             );

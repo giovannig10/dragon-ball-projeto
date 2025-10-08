@@ -111,12 +111,6 @@ export default function Racas() {
                     <h4 className={styles.sectionTitle}>Habilidades Especiais</h4>
                     <p className={styles.habilidadesList}>{raca.habilidadesEspeciais}</p>
                   </div>
-                  
-                  <div className={styles.cardActions}>
-                    <button className={styles.detailsButton}>
-                      Mais Detalhes
-                    </button>
-                  </div>
                 </div>
               </div>
             );
